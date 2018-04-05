@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript and the DOM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+    <body>
+            <h1 id="myHeading">JavaScript and the DOM</h1>
+            <p>Making a page interactive</p>
+            <button id="toggleList">Hide list</button>
+            <div class="list">
+                <p class="description">Things that are purple</p>
+                <input type="text" class="description">
+                <button class="description">Change list description</button>
+                <p title="label">Paragraph with the title attribute.</p>
+                <ul>
+                    <li>grapes</li>
+                    <li class="error-not-purple">blue</li>
+                    <li>amethyst</li>
+                    <li class="error-not-purple">orange</li>
+                    <li>lavender</li>
+                    <li class="error-not-purple">snow</li>
+                    <li>plums</li>
+                </ul>
+            <!-- input area to create new elements -->
+            <input type="text" class="addItemInput">
+            <button class="addItemButton">Add item</button>
+            </div>
+
+            <input type="text" id="myTextInput">
+            <button id="myButton">Change headline color</button>
+
+            <script src="app.js"></script>
+    </body>
+</html>

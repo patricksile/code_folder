@@ -1,0 +1,4 @@
+{
+    //Start in Insert Mode.
+    "vim.startInInsertMode": true
+}

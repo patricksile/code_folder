@@ -1,0 +1,22 @@
+New York 
+Los Angeles 
+Chicago 
+Houston 
+Phoenix 
+Philadelphia 
+San Antonio 
+Dallas 
+San Diego 
+San Jose 
+Detroit 
+San Francisco 
+Jacksonville 
+Indianapolis
+Austin 
+Columbus 
+Fort Worth 
+Charlotte 
+Memphis 
+Baltimore 
+El Paso 
+Boston 

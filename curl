@@ -1,0 +1,12 @@
+https://www.dropbox.com/s/351wi0881tc38au/Boost%20your%20rankings%20with%20all-in-one%20SEO%20Suite.mp4?dl=0
+curl -X POST -H "Content-Type: application/json" -d '{
+  "message":{
+    "attachment":{
+      "type":"video", 
+      "payload":{
+        "is_reusable": true,
+        "url":"https://www.dropbox.com/s/351wi0881tc38au/Boost%20your%20rankings%20with%20all-in-one%20SEO%20Suite.mp4?dl=0"
+      }
+    }
+  }
+}' "https://graph.facebook.com/v2.6/me/message_attachments?access_token=EAALppxljZACYBAFf0REdQwZC3JLWq6AZBf6cCjeCX8J7LtVZAewD5mZBSGHBopKwrwwku2rKLFTreJHOeRaJighJ0eNsSSd0jXrwIr3Sp0FqqE6afH4HVTMJSlN4lLqZCMOIZCZCZAI9FD0GisHPmuKeaAhualYY1qkGC4glxgp3LAvKFqJeKR0Hm"

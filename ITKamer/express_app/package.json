@@ -1,0 +1,22 @@
+{
+  "name": "express_app",
+  "version": "1.0.0",
+  "description": "Learning express",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/patricksile/express_app.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Patrick Sile",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jade": "^1.11.0"
+  }
+}

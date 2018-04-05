@@ -1,0 +1,103 @@
+import sys
+import urllib
+import re
+import datetime
+import MySQLdb
+from lxml import html
+import requests
+import _mysql
+from urlparse import urlparse
+import time
+from datetime import date, timedelta
+import json
+import smtplib
+
+def remove_non_ascii_1(text):
+    return ''.join([i if ord(i) < 128 else '' for i in text])
+
+
+
+#connecting to the mysql server
+conn = MySQLdb.connect(host= "127.0.0.1",
+              user="root",
+              passwd="",
+              db="scrapper")
+
+#getting a cursor for the database
+x = conn.cursor()
+
+sender = 'longonjec@yahoo.com'
+receivers = ['patouossaibrahim@yahoo.com']
+#Getting the date of today
+today = time.strftime("%Y-%m-%d")
+print today
+#Getting the date of yesterday
+yesterday = date.today() - timedelta(1)
+
+#getting the data stored on the temp table
+sql = "SELECT * FROM temp"
+x.execute(sql)
+results = x.fetchall()
+
+#stores the new datas in the new_data array
+new_data = []
+
+#browsing each rows of data
+for row in results:
+    title = row[1]
+    price = row[3]
+    #verify if the house has already been stored
+    x.execute("""SELECT * FROM `houses` WHERE `Date`=%s AND `Title`=%s AND `Price`=%s LIMIT 1""", (yesterday.strftime('%Y-%m-%d'),title, price))
+    verify = x.fetchall()
+    if(len(verify) == 0):
+        #if the house is not ye stored then it is consdered as new
+        new_data.append(title)
+
+#if there are new data
+if len(new_data) > 0:
+    html_msg = """From: From Person <from@fromdomain.com>
+                    To: To Person <to@todomain.com>
+                    MIME-Version: 1.0
+                    Content-type: text/html
+                    Subject: Daily house updates : %s """ % (today)
+    for new in new_data:
+        #we get house details from the temp table
+        x.execute("""SELECT * FROM temp WHERE `Title`=%s LIMIT 1""", (new))
+        data = x.fetchone()
+        photo = row[0]
+        title = data[1]
+        description = data[2]
+        price = data[3]
+        town = data[4]
+        domain = data[5]
+        room = data[6]
+        dimen = data[7]
+        site = data[8]
+        html_msg += "<div style='height:100px;'>" \
+                    "<a href='"+site+"' style='display:block; width:100%; height:100%;'>" \
+                        "<table border='0'>" \
+                            "<tr>" \
+                                "<td>" \
+                                    "<img src='"+photo+"' style='width:100px; height:100px;'/>" \
+                               "</td>" \
+                               "<td>" \
+                                   "<p><big style='font-size:1.3em;'>"+title+"</big><br>" \
+                                    "Price : "+price+" Euro<br>" \
+                                    "Rooms : "+ room+"<br>" \
+                                     "Dimensions : "+ dimen+"<br>" \
+                                    "Town : "+ town+"" \
+                                  "</p>" \
+                                  "</td>" \
+                              "</tr>" \
+                          "</table>" \
+                      "</a>" \
+                  "</div><br>"
+        #insert the data in the houses table
+        x.execute("""INSERT INTO houses (`Photo`, `Title`, `Description`, `Price`, `Town`, `Domain`, `Room`, `Dimen`, `Site`, `Date`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """, (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], today))
+        conn.commit()
+    try:
+        smtpObj = smtplib.SMTP('localhost')
+        smtpObj.sendmail(sender, receivers, html_msg)
+        print "Successfully sent email"
+    except :
+        print "Error: unable to send email"
