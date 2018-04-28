@@ -254,3 +254,11 @@ echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo s
 
 				- Automation Campaign
 			* Possible actions on the second page:
+			
+
+# Tutoring Mentoring and Mentoring
+
+PREMIERES NECESSITES:
+- connexion a internet de 4 Mbits/s par fibre optique 25.000 frs le mois (CAMTEL) (6 MOIS)
+
+- Creation de l'entreprise comme entreprise de service de (Training, tutoring, mentoring et autres domaines academiques et professionnels en ligne et hors ligne.
