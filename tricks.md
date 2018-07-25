@@ -4,6 +4,13 @@ To enable Vi-mode, edit (or create) the file ~/.inputrc or /etc/inputrc and add 
 
 set editing-mode vi
 set keymap vi-command
+
+# To check the repo url with git
+git remote -v
+
+# To set a new repo url
+git remote set-url https://patricksile@bitbucket.org/patricksile/mycodes.git (this url is an example)
+
 # REPL (Read–Eval–Print Loop)
 
 
